@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Example 2</title>
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+  <style>
+    <%- myCss.style %>
+  </style>
+  <header class="clearfix">
+    <div id="logo">
+      <img src="<%- logo %> ">
+      <h2 class="name">MARCELO RICARDO GRAU</h2>
+      <div>RICARDO WAGNER 3022, CÓRDOBA</div>
+      <div style="font-weight: bold;">RESPONSABLE MONOTRIBUTO</div>
+      <div><a href="mailto:info@cordobabaitcast.com.ar">info@cordobabaitcast.com.ar</a></div>
+    </div>
+    <div style="position: absolute;text-align: center;width: 100%;">
+      <h2 class="name" style="font-weight: bold;">ORIGINAL</h2>
+      <div
+        style="width: 80px;height: 80px;background: #80808061;margin: auto;border: 4px solid black;margin-top: 20px;">
+        <h1 style="margin-top: 5px;margin-bottom: 5px;font-size: 35px;">NC</h1>
+        <span>COD. 13</span>
+      </div>
+    </div>
+    <div id="company" style="margin-top: 21px;text-align: left;">
+      <h2 class="name" style="margin-bottom: 10px;">NOTA DE CR. Nº: <span style="font-weight: bold;">
+          <%- factNro %>
+        </span></h2>
+      <h2 class="name" style="margin-bottom: 10px;">FECHA: <span style="font-weight: bold;">
+          <%- fechaFact %>
+        </span></h2>
+      <div style="margin-bottom: 7px;">CUIT: <span style="font-weight: bold;">20185999336</span></div>
+      <div style="margin-bottom: 7px;">IIBB: <span style="font-weight: bold;">282708868 </span></div>
+      <div style="margin-bottom: 7px;">Inicio de act.: <span style="font-weight: bold;">30/04/2021 </span></div>
+    </div>
+    </div>
+  </header>
+  <main>
+    <div id="details" class="clearfix" style="margin-bottom: 15px;border-right: 6px solid #0087c3;">
+      <div id="client">
+        <div class="to">CLIENTE:</div>
+        <h2 class="name">
+          <%- clienteName %>
+        </h2>
+        <h2 class="name">DNI: <%- clienteNro %>
+        </h2>
+        <div class="address">
+          <%- clienteDireccion %>
+        </div>
+        <div class="email"><a href="mailto:<%- clienteEmail %> ">
+            <%- clienteEmail %>
+          </a></div>
+      </div>
+      <div id="client" style="float: right;border-left: none;margin-right: 15px; ">
+        <div class="to">COMPROBANTE ASOCIADO:</div>
+        <h2 class="name">FACTURA Nº: </h2>
+        <h2 class="name">C <%- cbteAsoc %>
+        </h2>
+      </div>
+    </div>
+    <h3>Productos cancelados:</h3>
+    <table border="0" cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="no">#</th>
+          <th class="desc">DESCRIPCION</th>
+          <th class="unit">PRECIO UNIT.</th>
+          <th class="qty">CANTIDAD</th>
+          <th class="total">TOTAL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% listaItems.forEach(function(item){ %>
+          <%- include('./ItemFact.ejs', {itemId: item.id, itemName: item.name, itemPrice: item.price, itemCant:
+            item.cant, itemTotal: item.total}); %>
+            <% }); %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2"></td>
+          <td colspan="2">SUBTOTAL</td>
+          <td>$<%- subTotal %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td colspan="2">ENVIO</td>
+          <td>$<%- costoEnvio %>
+          </td>
+        </tr>
+        <% if(cupon===true){ %>
+          <tr>
+            <td colspan="2"></td>
+            <td colspan="2">DESC. CUPÓN</td>
+            <td>- $<%- descCupon %>
+            </td>
+          </tr>
+          <% } %>
+            <tr>
+              <td colspan="2"></td>
+              <td colspan="2">TOTAL NOTA DE CRÉDITO</td>
+              <td>$<%- totalFact %>
+              </td>
+            </tr>
+      </tfoot>
+    </table>
+  </main>
+  <footer style="margin-bottom: 50px;">
+    <div style="width: 65%">
+      <div style="position: absolute;left: 0%;">
+        <img src="<%- codQR %>" width="100px">
+      </div>
+      <div style="position: absolute;left: 100px;">
+        <img src="<%- logoAfip1 %>" style="width: 75%;">
+        <br>
+        <img src="<%- logoAfip2 %>" style="width: 75%;">
+      </div>
+    </div>
+    <div style="width: 25%;position: absolute;right: 0;text-align: left;">
+      <h3>CAE Nº: <%- caeNro %>
+      </h3>
+      <h3>VTO. CAE: <%- caeVto %>
+      </h3>
+    </div>
+    </div>
+  </footer>
+</body>
+
+</html>

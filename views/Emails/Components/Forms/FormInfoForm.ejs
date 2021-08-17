@@ -1,0 +1,86 @@
+<th
+  style="
+    color: #0a0a0a;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.3;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  "
+>
+  <%- include("../Other/SpacerTrasparent.ejs") %>
+  <h3
+    class="text-center"
+    style="
+      color: <%= Colors[0].tittle %>;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin: 0;
+      margin-bottom: 10px;
+      padding: 0;
+      text-align: center;
+      word-wrap: normal;
+    "
+  >
+    <%= titleInfoForm %>:
+  </h3>
+  <table
+    class="container float-center"
+    style="
+      background: <%= Colors[0].primary %>;
+      border-collapse: collapse;
+      border-spacing: 0;
+      float: none;
+      margin: 0 auto;
+      padding: 0;
+      text-align: center;
+      vertical-align: top;
+      width: 100%;
+    "
+    align="center"
+  >
+    <tbody>
+      <tr style="padding: 0; text-align: left; vertical-align: top">
+        <td
+          style="
+            -moz-hyphens: auto;
+            -webkit-hyphens: auto;
+            border-collapse: collapse !important;
+            color: #0a0a0a;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            hyphens: auto;
+            line-height: 1.3;
+            margin: 0;
+            padding: 25px;
+            text-align: left;
+            vertical-align: top;
+            word-wrap: break-word;
+          "
+        >
+          <% informationList.forEach(info => { %> <% if (info.col1 === 3) { %>
+          <%-include('../Grids/Col3.ejs', {titleInfo1: info.title1,
+          contentInfo1: info.content1, titleInfo2: info.title2, contentInfo2:
+          info.content2, titleInfo3: info.title3, contentInfo3: info.content3,
+          titleInfo4: info.title4, contentInfo4: info.content4, colorTitle:
+          Colors[0].fontBg}) %> <% } %> <% if (info.col1 === 4) { %>
+          <%-include('../Grids/Col4.ejs', {titleInfo1: info.title1,
+          contentInfo1: info.content1, titleInfo2: info.title2, contentInfo2:
+          info.content2, titleInfo3: info.title3, contentInfo3: info.content3,
+          colorTitle: Colors[0].fontBg}) %> <% } %> <% if (info.col1 === 6) { %>
+          <%-include('../Grids/Col6.ejs', {titleInfo1: info.title1,
+          contentInfo1: info.content1, titleInfo2: info.title2, contentInfo2:
+          info.content2, colorTitle: Colors[0].fontBg}) %> <% } %> <% if
+          (info.col1 === 12) { %> <%-include('../Grids/Col12.ejs', {titleInfo1:
+          info.title1, contentInfo1: info.content1, colorTitle:
+          Colors[0].fontBg}) %> <% } %> <% }); %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</th>
